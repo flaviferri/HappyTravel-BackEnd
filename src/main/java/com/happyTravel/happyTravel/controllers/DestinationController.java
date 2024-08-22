@@ -19,6 +19,7 @@ public class DestinationController {
         this.destinationService = destinationService;
     }
 
+    @CrossOrigin(origins = "http://localhost:4001")
     @GetMapping("/destinations")
     public ResponseEntity<List<Destination>> getDestination() {
         List<Destination> destinations = destinationService.getDestination();
