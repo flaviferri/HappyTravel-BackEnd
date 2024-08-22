@@ -1,4 +1,4 @@
-package com.happyTravel.models;
+package com.happyTravel.happyTravel.models;
 
 
 import jakarta.persistence.*;
