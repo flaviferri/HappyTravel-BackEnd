@@ -3,7 +3,6 @@ package com.happyTravel.happyTravel.models;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
 @Entity
@@ -16,7 +15,7 @@ public class Destination {
     private String name;
     private String country;
     private String message;
-    private String img;
+    private String image;
     private int id_user;
 
 
@@ -27,8 +26,8 @@ public class Destination {
         return this;
     }
 
-    public Destination setImg(String img) {
-        this.img = img;
+    public Destination setImage(String img) {
+        this.image = img;
         return this;
     }
 
