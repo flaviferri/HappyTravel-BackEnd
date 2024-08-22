@@ -26,8 +26,8 @@ public class Destination {
         return this;
     }
 
-    public Destination setImage(String img) {
-        this.image = img;
+    public Destination setImage(String image) {
+        this.image = image;
         return this;
     }
 
