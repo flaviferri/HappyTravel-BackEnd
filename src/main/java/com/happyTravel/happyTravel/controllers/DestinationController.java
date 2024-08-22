@@ -1,4 +1,4 @@
-package com.happyTravel.happyTravel.models.controllers;
+package com.happyTravel.happyTravel.controllers;
 
 import com.happyTravel.happyTravel.models.Destination;
 import com.happyTravel.happyTravel.services.DestinationService;
