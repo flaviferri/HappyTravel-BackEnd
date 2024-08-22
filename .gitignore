@@ -31,3 +31,19 @@ build/
 
 ### VS Code ###
 .vscode/
+### Extra ###
+/out
+target/
+target/*
+target/**
+/target/
+*/target/**
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+!**/src/main/resources/**/application.properties/
+!**/src/main/resources/aplication.properties
