@@ -28,12 +28,28 @@ public class DestinationService {
         return new ResponseEntity<>(destination, HttpStatus.CREATED);
     }
 
-    public void delete (Destination destination){
+    public void delete(Destination destination) {
         this.destinationRepository.delete(destination);
 
     }
 
-    public Optional<Destination> finById(int id){
+    public Optional<Destination> finById(int id) {
         return destinationRepository.findById(id);
     }
+
+    public ResponseEntity<Object> udpateDestination(int id, Destination destination) {
+        Optional<Destination> existingDestination = destinationRepository.findById(id);
+        if (existingDestination.isPresent()) {
+            Destination updateDestination = existingDestination.get();
+            updateDestination.setName(destination.getName());
+            updateDestination.setCountry(destination.getCountry());
+            updateDestination.setImage(destination.getImage());
+            updateDestination.setMessage(destination.getMessage());
+            destinationRepository.save(updateDestination);
+            return new ResponseEntity<>(updateDestination, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Destino no encontrado", HttpStatus.NOT_FOUND);
+        }
+    }
+
 }
