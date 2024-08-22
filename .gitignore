@@ -47,3 +47,4 @@ env.bak/
 venv.bak/
 !**/src/main/resources/**/application.properties/
 !**/src/main/resources/aplication.properties
+src/main/resources/application.properties
