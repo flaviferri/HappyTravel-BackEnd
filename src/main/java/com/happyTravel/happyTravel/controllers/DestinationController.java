@@ -50,9 +50,9 @@ public class DestinationController {
         return ResponseEntity.notFound().build();
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Object> updateDestination(@RequestBody Destination destination) {
-        return destinationService.updateDestination(id)
+    @PutMapping("/destinations/{id}")
+    public ResponseEntity<Object> updateDestination(@PathVariable("id") int id, @RequestBody Destination destination) {
+        return destinationService.udpateDestination(id, destination);
     }
 
 
