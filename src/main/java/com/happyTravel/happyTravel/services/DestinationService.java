@@ -1,8 +1,8 @@
-package com.happyTravel.services;
+package com.happyTravel.happyTravel.services;
 
 
-import com.happyTravel.models.Destination;
-import com.happyTravel.repositories.DestinationRepository;
+import com.happyTravel.happyTravel.models.Destination;
+import com.happyTravel.happyTravel.repositories.DestinationRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
