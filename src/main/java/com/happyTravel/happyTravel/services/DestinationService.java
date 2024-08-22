@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DestinationService {
@@ -25,5 +26,14 @@ public class DestinationService {
     public ResponseEntity<Object> addDestination(Destination destination) {
         destinationRepository.save(destination);
         return new ResponseEntity<>(destination, HttpStatus.CREATED);
+    }
+
+    public void delete (Destination destination){
+        this.destinationRepository.delete(destination);
+
+    }
+
+    public Optional<Destination> finById(int id){
+        return destinationRepository.findById(id);
     }
 }
