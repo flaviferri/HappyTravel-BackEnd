@@ -54,12 +54,10 @@ public class DestinationController {
         return ResponseEntity.notFound().build();
     }
 
-    @CrossOrigin(origins = "http://localhost:4001")
-    @PutMapping("/{id}")
+    @PutMapping("/destinations/{id}")
     public ResponseEntity<Object> updateDestination(@PathVariable("id") int id, @RequestBody Destination destination) {
-        return destinationService.updateDestination(id, destination);
+        return destinationService.udpateDestination(id, destination);
     }
-
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getDestinationById(@PathVariable int id) {
