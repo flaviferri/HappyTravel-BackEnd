@@ -7,7 +7,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class HappyTravelApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(HappyTravelApplication.class, args);
+
+
+
+
+
+
 	}
+
+
 
 }
