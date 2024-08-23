@@ -13,14 +13,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-
-
 @RestController
 public class DestinationController {
 
     private final DestinationService destinationService;
 
-    public DestinationController(DestinationService destinationService){
+    public DestinationController(DestinationService destinationService) {
 
         this.destinationService = destinationService;
     }
@@ -35,26 +33,26 @@ public class DestinationController {
         return ResponseEntity.ok(destinations);
     }
 
-
+    @CrossOrigin(origins = "http://localhost:4001")
     @PostMapping("/destinations")
     public ResponseEntity<Object> addDestination(@RequestBody Destination destination) {
         return destinationService.addDestination(destination);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object>delete(@PathVariable("id")int id){
+    public ResponseEntity<Object> delete(@PathVariable("id") int id) {
         Optional<Destination> existingDestination = this.destinationService.finById(id);
-        if(existingDestination.isPresent()){
+        if (existingDestination.isPresent()) {
             this.destinationService.delete(existingDestination.get());
             return ResponseEntity.ok().build();
         }
         return ResponseEntity.notFound().build();
     }
 
-    @PutMapping("/destinations/{id}")
+    @CrossOrigin(origins = "http://localhost:4001")
+    @PutMapping("/{id}")
     public ResponseEntity<Object> updateDestination(@PathVariable("id") int id, @RequestBody Destination destination) {
         return destinationService.udpateDestination(id, destination);
     }
-
 
 }
