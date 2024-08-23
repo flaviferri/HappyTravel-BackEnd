@@ -3,11 +3,14 @@ package com.happyTravel.happyTravel.services;
 import com.happyTravel.happyTravel.models.Destination;
 import com.happyTravel.happyTravel.repositories.DestinationRepository;
 
+import org.springframework.data.util.ReflectionUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -35,5 +38,26 @@ public class DestinationService {
 
     public Optional<Destination> finById(int id){
         return destinationRepository.findById(id);
+    }
+
+    public ResponseEntity<Object> updateDestinationFields(int id, Map<String, Object> fields) {
+        Optional<Destination> existingDestination = destinationRepository.findById(id);
+
+        if (existingDestination.isPresent()) {
+            Destination destination = existingDestination.get();
+
+            fields.forEach((key, value) -> {
+                Field field = ReflectionUtils.findField(Destination.class, key);
+                if (field != null) {
+                    field.setAccessible(true);
+                    ReflectionUtils.setField(field, destination, value);
+                }
+            });
+
+            destinationRepository.save(destination);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

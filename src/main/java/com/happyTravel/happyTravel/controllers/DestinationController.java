@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -34,6 +35,12 @@ public class DestinationController {
         return destinationService.addDestination(destination);
     }
 
+    public ResponseEntity<Object>updateDestinationFields(@PathVariable int id, Map<String,Object>fields){
+
+            return destinationService.updateDestinationFields(id,fields);
+
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Object>delete(@PathVariable("id")int id){
         Optional<Destination> existingDestination = this.destinationService.finById(id);
@@ -43,4 +50,6 @@ public class DestinationController {
         }
         return ResponseEntity.notFound().build();
     }
+
+
 }
