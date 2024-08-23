@@ -31,17 +31,22 @@ public class DestinationService {
         return new ResponseEntity<>(destination, HttpStatus.CREATED);
     }
 
-    public void delete (Destination destination){
+    public void delete(Destination destination) {
         this.destinationRepository.delete(destination);
 
     }
 
-    public Optional<Destination> finById(int id){
+    public Optional<Destination> finById(int id) {
         return destinationRepository.findById(id);
     }
 
+
     public Optional<Destination> getDestinationById(int id) {
         return destinationRepository.findById(id);
+    }
+
+
+
     }
 
 

@@ -11,6 +11,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+
 
 @RestController
 public class DestinationController {
@@ -22,6 +28,7 @@ public class DestinationController {
         this.destinationService = destinationService;
     }
 
+    @CrossOrigin(origins = "http://localhost:4001")
     @GetMapping("/destinations")
     public ResponseEntity<List<Destination>> getDestination() {
         List<Destination> destinations = destinationService.getDestination();
@@ -50,6 +57,7 @@ public class DestinationController {
     }
 
 
+
     @GetMapping("/{id}")
     public ResponseEntity<?> getDestinationById(@PathVariable int id) {
         Optional<Destination> destination = destinationService.getDestinationById(id);
@@ -58,7 +66,8 @@ public class DestinationController {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Destination not found");
         }
-    }
+
+}
 
 
 }
