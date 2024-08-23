@@ -35,7 +35,20 @@ public class DestinationService {
         this.destinationRepository.delete(destination);
 
     }
-
+    public ResponseEntity<Object> udpateDestination(int id, Destination destination) {
+        Optional<Destination> existingDestination = destinationRepository.findById(id);
+        if (existingDestination.isPresent()) {
+            Destination updateDestination = existingDestination.get();
+            updateDestination.setName(destination.getName());
+            updateDestination.setCountry(destination.getCountry());
+            updateDestination.setImage(destination.getImage());
+            updateDestination.setMessage(destination.getMessage());
+            destinationRepository.save(updateDestination);
+            return new ResponseEntity<>(updateDestination, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Destino no encontrado", HttpStatus.NOT_FOUND);
+        }
+    }
     public Optional<Destination> finById(int id) {
         return destinationRepository.findById(id);
     }
