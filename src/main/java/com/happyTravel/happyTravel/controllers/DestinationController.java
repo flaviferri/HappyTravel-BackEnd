@@ -43,7 +43,7 @@ public class DestinationController {
     }
 
 
-
+    @CrossOrigin(origins = "http://localhost:4001")
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(@PathVariable("id") int id) {
         Optional<Destination> existingDestination = this.destinationService.finById(id);
@@ -54,11 +54,13 @@ public class DestinationController {
         return ResponseEntity.notFound().build();
     }
 
-    @PutMapping("/destinations/{id}")
+    @CrossOrigin(origins = "http://localhost:4001")
+    @PutMapping("/{id}")
     public ResponseEntity<Object> updateDestination(@PathVariable("id") int id, @RequestBody Destination destination) {
         return destinationService.udpateDestination(id, destination);
     }
 
+    @CrossOrigin(origins = "http://localhost:4001")
     @GetMapping("/{id}")
     public ResponseEntity<?> getDestinationById(@PathVariable int id) {
         Optional<Destination> destination = destinationService.getDestinationById(id);
