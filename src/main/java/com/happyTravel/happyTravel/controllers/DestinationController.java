@@ -44,7 +44,7 @@ public class DestinationController {
 
 
     @CrossOrigin(origins = "http://localhost:4001")
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/destinations/{id}")
     public ResponseEntity<Object> delete(@PathVariable("id") int id) {
         Optional<Destination> existingDestination = this.destinationService.finById(id);
         if (existingDestination.isPresent()) {
@@ -61,7 +61,7 @@ public class DestinationController {
     }
 
     @CrossOrigin(origins = "http://localhost:4001")
-    @GetMapping("/{id}")
+    @GetMapping("/destinations/{id}")
     public ResponseEntity<?> getDestinationById(@PathVariable int id) {
         Optional<Destination> destination = destinationService.getDestinationById(id);
         if (destination.isPresent()) {
