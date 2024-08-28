@@ -3,13 +3,11 @@ package com.happyTravel.happyTravel.controllers;
 import com.happyTravel.happyTravel.models.Destination;
 import com.happyTravel.happyTravel.services.DestinationService;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,7 +40,6 @@ public class DestinationController {
         return destinationService.addDestination(destination);
     }
 
-
     @CrossOrigin(origins = "http://localhost:4001")
     @DeleteMapping("/destinations/{id}")
     public ResponseEntity<Object> delete(@PathVariable("id") int id) {
@@ -70,6 +67,6 @@ public class DestinationController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Destination not found");
         }
 
-}
+    }
 
 }
