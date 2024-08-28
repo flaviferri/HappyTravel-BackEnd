@@ -23,7 +23,7 @@ public class DestinationService {
     }
 
     public List<Destination> getDestination() {
-        return destinationRepository.findAll();
+        return destinationRepository.findAllByOrderByIdAsc();
     }
 
     public ResponseEntity<Object> addDestination(Destination destination) {
