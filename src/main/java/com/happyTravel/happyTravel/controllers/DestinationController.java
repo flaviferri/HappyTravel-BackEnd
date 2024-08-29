@@ -35,7 +35,7 @@ public class DestinationController {
     }
 
     @CrossOrigin(origins = "http://localhost:4001")
-    @PostMapping("/destinations")
+    @PostMapping("/destinations/create")
     public ResponseEntity<Object> addDestination(@RequestBody Destination destination) {
         return destinationService.addDestination(destination);
     }
