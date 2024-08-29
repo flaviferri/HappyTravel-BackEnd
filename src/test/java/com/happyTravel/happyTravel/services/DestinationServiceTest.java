@@ -26,7 +26,7 @@ private DestinationRepository destinationRepository;
 private DestinationService destinationService;
 @BeforeEach
 void setUp() {
-    MockitoAnnotations.openMocks(this);
+        MockitoAnnotations.openMocks(this);
 }
 @Test
 void testGetDestination() {
@@ -41,10 +41,10 @@ void testGetDestination() {
         assertThat(destinations).hasSize(2);
         assertThat(destinations.get(0).getName()).isEqualTo("Paris");
         assertThat(destinations.get(1).getName()).isEqualTo("London");
-    }
+        }
 
-    @Test
-    void testAddDestination() {
+        @Test
+        void testAddDestination() {
         Destination destination = new Destination().setId(1).setName("Paris").setCountry("France").setImage("paris.jpg").setMessage("Beautiful city").setId_user(1);
 
         when(destinationRepository.save(any(Destination.class))).thenReturn(destination);
@@ -56,11 +56,11 @@ void testGetDestination() {
 
         
         verify(destinationRepository).save(destination);
-    }
+        }
 
-    @Test
-    void testUpdateDestination() {
-    
+        @Test
+        void testUpdateDestination() {
+
         Destination existingDestination = new Destination().setId(1).setName("Paris").setCountry("France").setImage("paris.jpg").setMessage("Beautiful city").setId_user(1);
         Destination updatedDestination = new Destination().setName("Paris Updated").setCountry("France Updated").setImage("paris_updated.jpg").setMessage("Updated city");
 
@@ -73,10 +73,9 @@ void testGetDestination() {
         assertThat(response.getBody()).isEqualTo(existingDestination);
 
         verify(destinationRepository).save(existingDestination);
-    }
-
-    @Test
-    void testDelete() {
+        }       
+        @Test
+        void testDelete() {
 
         Destination destination = new Destination().setId(1).setName("Paris").setCountry("France").setImage("paris.jpg").setMessage("Beautiful city").setId_user(1);
 
@@ -86,10 +85,9 @@ void testGetDestination() {
         destinationService.delete(destination);
 
         verify(destinationRepository).delete(destination);
-    }
-
-    @Test
-    void testGetDestinationById() {
+        }       
+        @Test
+        void testGetDestinationById() {
 
         Destination destination = new Destination().setId(1).setName("Paris").setCountry("France").setImage("paris.jpg").setMessage("Beautiful city").setId_user(1);
 
@@ -99,5 +97,5 @@ void testGetDestination() {
 
         assertThat(foundDestination).isPresent();
         assertThat(foundDestination.get()).isEqualTo(destination);
-    }
+        }
 }
