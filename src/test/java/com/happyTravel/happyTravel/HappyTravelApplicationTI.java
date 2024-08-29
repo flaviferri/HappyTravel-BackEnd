@@ -16,7 +16,7 @@ class CorsIntegrationTest {
     private MockMvc mockMvc;
 
     @Test
-    void testCorsHeaders() throws Exception {
+    void testCorsEndpoints() throws Exception {
         mockMvc.perform(get("/destinations")) 
                 .andExpect(status().isOk());
     }
