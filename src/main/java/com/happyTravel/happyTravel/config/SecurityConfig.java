@@ -12,7 +12,6 @@ import com.happyTravel.happyTravel.jwt.JwtAuthenticationFilter;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 
-import static org.springframework.security.config.Customizer.withDefaults;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter; 
@@ -34,7 +33,6 @@ public class SecurityConfig {
                     .requestMatchers("/auth/**").permitAll()
                     .anyRequest().authenticated()
             )
-            .formLogin(withDefaults())
             .sessionManagement(sessionManager ->
                 sessionManager
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
