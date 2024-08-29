@@ -7,8 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.happyTravel.happyTravel.models.Destination;
-import com.happyTravel.happyTravel.repositories.DestinationRepository;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DestinationService {
@@ -20,7 +20,7 @@ public class DestinationService {
     }
 
     public List<Destination> getDestination() {
-        return destinationRepository.findAll();
+        return destinationRepository.findAllByOrderByIdAsc();
     }
 
     public ResponseEntity<Object> addDestination(Destination destination) {
@@ -57,7 +57,7 @@ public class DestinationService {
 
 
 
-    }
+}
 
 
 
