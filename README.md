@@ -194,4 +194,19 @@ Las coders que hemos trabajado en este proyecto somos:
 - [Sara Terán](https://github.com/Sarii4)
 
 ## Demo
+Versión móvil:
+https://github.com/user-attachments/assets/84d2de90-dabd-43a7-a0e1-0ea6b68def39
+
+Versión desktop:
+
+<img width="864" alt="home-ht" src="https://github.com/user-attachments/assets/1fe9969e-18b9-4097-82cb-b4d6a06aacf6">
+<img width="863" alt="register-ht" src="https://github.com/user-attachments/assets/2738c1bb-be3f-49fb-b101-c3d5192875d4">
+<img width="863" alt="logiin" src="https://github.com/user-attachments/assets/8e815aeb-ca77-4de0-8a05-6b02403e9270">
+<img width="866" alt="logged-home" src="https://github.com/user-attachments/assets/f17fba8c-f7f5-49ab-b022-f5fd9656a36a">
+<img width="862" alt="Captura de pantalla 2024-08-29 a les 18 07 44" src="https://github.com/user-attachments/assets/e2b40a3e-34b0-4147-bc9b-6396e37c1818">
+<img width="862" alt="Captura de pantalla 2024-08-29 a les 18 08 03" src="https://github.com/user-attachments/assets/5f2088b7-f7ec-4786-b097-a9185c426a4e">
+<img width="861" alt="Captura de pantalla 2024-08-29 a les 18 08 31" src="https://github.com/user-attachments/assets/66a74ce4-940c-4d43-b486-d9dfc4ed4ed0">
+<img width="866" alt="Captura de pantalla 2024-08-29 a les 18 08 48" src="https://github.com/user-attachments/assets/1e26ebf3-e81e-4a43-b701-29e80fd71f91">
+<img width="863" alt="Captura de pantalla 2024-08-29 a les 18 09 28" src="https://github.com/user-attachments/assets/23e53536-e2ed-48fd-ab8e-f8cb9eb8df93">
+<img width="861" alt="Captura de pantalla 2024-08-29 a les 18 09 46" src="https://github.com/user-attachments/assets/4b304808-f881-4c32-aa2b-98d6bd66303c">
 
