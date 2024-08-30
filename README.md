@@ -22,7 +22,7 @@
 
 Desarrollo de una aplicación de viajes en la que cada usuario puede ver, añadir, editar y eliminar destinos a los que quiere ir, además de ver los destinos de otros usuarios. 
 
-La aplicación permite a los usuarios hacer login, y es a través de esta autenticación que tienen acceso a editar y elimiinar sus destinos creados. 
+La aplicación permite a los usuarios hacer login, y es a través de esta autenticación que tienen acceso a editar y eliminar sus destinos creados. 
 
 En el proyecto se ha creado tanto la parte del Front on React js con Tailwind para el CSS partiendo de prototipos dados por el cliente, como toda la parte del Back con Java SpringBoot y PostgreSQL.
 
