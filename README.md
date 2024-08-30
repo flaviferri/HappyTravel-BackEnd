@@ -55,7 +55,7 @@ Para entender la funcionalidad de la aplicación y la lógica a seguir se ha rea
 
 Se ha normalizado a segunda forma las tablas de la base de datos, resultando en dos tablas: una de destinos y una de usuarios. 
 
-[Ver diagrama de datos](https://drive.google.com/file/d/1XwmNrD5dF5y19a_OfLL5ZvE6qf-GG4yk/view?usp=sharing)
+[Ver diagrama de datos](https://drive.google.com/file/d/10PgRGYlonrVyzvB59yHySvLqkj4b0A6J/view)
 
 
 
