@@ -14,6 +14,7 @@ public class Destination {
     private int id;
     private String name;
     private String country;
+    @Column(length = 500)
     private String message;
     private String image;
     private int id_user;
