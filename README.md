@@ -194,10 +194,11 @@ Las coders que hemos trabajado en este proyecto somos:
 - [Sara Terán](https://github.com/Sarii4)
 
 ## Demo
-Versión móvil:
+**Versión móvil:**
+
 https://github.com/user-attachments/assets/84d2de90-dabd-43a7-a0e1-0ea6b68def39
 
-Versión desktop:
+**Versión desktop:**
 
 <img width="864" alt="home-ht" src="https://github.com/user-attachments/assets/1fe9969e-18b9-4097-82cb-b4d6a06aacf6">
 <img width="863" alt="register-ht" src="https://github.com/user-attachments/assets/2738c1bb-be3f-49fb-b101-c3d5192875d4">
