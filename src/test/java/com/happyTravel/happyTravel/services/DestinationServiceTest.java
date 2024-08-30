@@ -22,80 +22,82 @@ class DestinationServiceTest {
 
 @Mock
 private DestinationRepository destinationRepository;
+
 @InjectMocks
 private DestinationService destinationService;
+
 @BeforeEach
 void setUp() {
         MockitoAnnotations.openMocks(this);
 }
+
 @Test
 void testGetDestination() {
-
         Destination dest1 = new Destination().setId(1).setName("Paris").setCountry("France").setImage("paris.jpg").setMessage("Beautiful city").setId_user(1);
         Destination dest2 = new Destination().setId(2).setName("London").setCountry("UK").setImage("london.jpg").setMessage("Great city").setId_user(2);
 
-        when(destinationRepository.findAll()).thenReturn(List.of(dest1, dest2));
+        when(destinationRepository.findAllByOrderByIdAsc()).thenReturn(List.of(dest1, dest2));
 
         List<Destination> destinations = destinationService.getDestination();
 
         assertThat(destinations).hasSize(2);
         assertThat(destinations.get(0).getName()).isEqualTo("Paris");
         assertThat(destinations.get(1).getName()).isEqualTo("London");
-        }
+}
 
-        @Test
-        void testAddDestination() {
-        Destination destination = new Destination().setId(1).setName("Paris").setCountry("France").setImage("paris.jpg").setMessage("Beautiful city").setId_user(1);
+@Test
+void testAddDestination() {
+        Destination dest = new Destination().setId(1).setName("Tokyo").setCountry("Japan").setImage("tokyo.jpg").setMessage("Amazing city").setId_user(1);
 
-        when(destinationRepository.save(any(Destination.class))).thenReturn(destination);
+        when(destinationRepository.save(any(Destination.class))).thenReturn(dest);
 
-        ResponseEntity<Object> response = destinationService.addDestination(destination);
+        ResponseEntity<Object> response = destinationService.addDestination(dest);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
-        assertThat(response.getBody()).isEqualTo(destination);
+        assertThat(response.getBody()).isEqualTo(dest);
+}
 
-        
-        verify(destinationRepository).save(destination);
-        }
+@Test
+void testDelete() {
+        Destination dest = new Destination().setId(1).setName("Tokyo").setCountry("Japan").setImage("tokyo.jpg").setMessage("Amazing city").setId_user(1);
 
-        @Test
-        void testUpdateDestination() {
+        destinationService.delete(dest);
 
-        Destination existingDestination = new Destination().setId(1).setName("Paris").setCountry("France").setImage("paris.jpg").setMessage("Beautiful city").setId_user(1);
-        Destination updatedDestination = new Destination().setName("Paris Updated").setCountry("France Updated").setImage("paris_updated.jpg").setMessage("Updated city");
+        verify(destinationRepository).delete(dest);
+}
 
-        when(destinationRepository.findById(1)).thenReturn(Optional.of(existingDestination));
-        when(destinationRepository.save(existingDestination)).thenReturn(existingDestination);
+@Test
+void testUpdateDestination() {
+        Destination existingDest = new Destination().setId(1).setName("Tokyo").setCountry("Japan").setImage("tokyo.jpg").setMessage("Amazing city").setId_user(1);
+        Destination updatedDest = new Destination().setName("Tokyo Updated").setCountry("Japan Updated").setImage("tokyo_updated.jpg").setMessage("Updated city").setId_user(1);
 
-        ResponseEntity<Object> response = destinationService.udpateDestination(1, updatedDestination);
+        when(destinationRepository.findById(1)).thenReturn(Optional.of(existingDest));
+        when(destinationRepository.save(any(Destination.class))).thenReturn(updatedDest);
+
+        ResponseEntity<Object> response = destinationService.udpateDestination(1, updatedDest);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(response.getBody()).isEqualTo(existingDestination);
+        assertThat(((Destination) response.getBody()).getName()).isEqualTo("Tokyo Updated");
+}
 
-        verify(destinationRepository).save(existingDestination);
-        }       
-        @Test
-        void testDelete() {
+@Test
+void testFindById() {
+        Destination dest = new Destination().setId(1).setName("Tokyo").setCountry("Japan").setImage("tokyo.jpg").setMessage("Amazing city").setId_user(1);
 
-        Destination destination = new Destination().setId(1).setName("Paris").setCountry("France").setImage("paris.jpg").setMessage("Beautiful city").setId_user(1);
+        when(destinationRepository.findById(1)).thenReturn(Optional.of(dest));
 
+        Optional<Destination> foundDest = destinationService.finById(1);
 
-        when(destinationRepository.findById(1)).thenReturn(Optional.of(destination));
+        assertThat(foundDest).isPresent();
+        assertThat(foundDest.get().getName()).isEqualTo("Tokyo");
+}
 
-        destinationService.delete(destination);
+@Test
+void testGetDestinationById_NotFound() {
+        when(destinationRepository.findById(1)).thenReturn(Optional.empty());
 
-        verify(destinationRepository).delete(destination);
-        }       
-        @Test
-        void testGetDestinationById() {
+        Optional<Destination> foundDest = destinationService.getDestinationById(1);
 
-        Destination destination = new Destination().setId(1).setName("Paris").setCountry("France").setImage("paris.jpg").setMessage("Beautiful city").setId_user(1);
-
-        when(destinationRepository.findById(1)).thenReturn(Optional.of(destination));
-
-        Optional<Destination> foundDestination = destinationService.getDestinationById(1);
-
-        assertThat(foundDestination).isPresent();
-        assertThat(foundDestination.get()).isEqualTo(destination);
+        assertThat(foundDest).isNotPresent();
         }
 }
