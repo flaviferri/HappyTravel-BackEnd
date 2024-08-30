@@ -15,7 +15,7 @@ import com.happyTravel.happyTravel.repositories.DestinationRepository;
 
 @SpringBootTest
 @Transactional 
-public class DestinationServiceIntegrationTest {
+public class DestinationServiceIT {
 
     @Autowired
     private DestinationService destinationService;
