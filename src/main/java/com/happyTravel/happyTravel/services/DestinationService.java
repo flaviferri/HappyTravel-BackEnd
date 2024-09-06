@@ -1,17 +1,14 @@
 package com.happyTravel.happyTravel.services;
 
-import com.happyTravel.happyTravel.models.Destination;
-import com.happyTravel.happyTravel.repositories.DestinationRepository;
+import java.util.List;
+import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Field;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import com.happyTravel.happyTravel.models.Destination;
+import com.happyTravel.happyTravel.repositories.DestinationRepository;
 
 @Service
 public class DestinationService {
@@ -23,7 +20,7 @@ public class DestinationService {
     }
 
     public List<Destination> getDestination() {
-        return destinationRepository.findAll();
+        return destinationRepository.findAllByOrderByIdAsc();
     }
 
     public ResponseEntity<Object> addDestination(Destination destination) {
@@ -31,18 +28,36 @@ public class DestinationService {
         return new ResponseEntity<>(destination, HttpStatus.CREATED);
     }
 
-    public void delete (Destination destination){
+    public void delete(Destination destination) {
         this.destinationRepository.delete(destination);
 
     }
-
-    public Optional<Destination> finById(int id){
+    public ResponseEntity<Object> udpateDestination(int id, Destination destination) {
+        Optional<Destination> existingDestination = destinationRepository.findById(id);
+        if (existingDestination.isPresent()) {
+            Destination updateDestination = existingDestination.get();
+            updateDestination.setName(destination.getName());
+            updateDestination.setCountry(destination.getCountry());
+            updateDestination.setImage(destination.getImage());
+            updateDestination.setMessage(destination.getMessage());
+            destinationRepository.save(updateDestination);
+            return new ResponseEntity<>(updateDestination, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Destino no encontrado", HttpStatus.NOT_FOUND);
+        }
+    }
+    public Optional<Destination> finById(int id) {
         return destinationRepository.findById(id);
     }
+
 
     public Optional<Destination> getDestinationById(int id) {
         return destinationRepository.findById(id);
     }
 
 
+
 }
+
+
+
